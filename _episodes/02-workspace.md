@@ -95,7 +95,7 @@ The last step is to move the `AnalysisPayload` codebase into a new package with 
 mkdir source/AnalysisPayload
 mkdir source/AnalysisPayload/util
 git mv AnalysisPayload.cxx source/AnalysisPayload/util
-git mv CMakeLists.txt source/AnalysisPayload/
+git mv CMakeLists.txt source/
 ```
 
 After this, everything should be set to go! The list of changes to your repository should look like the following. Make sure to commit everything before moving to the next step!
@@ -108,7 +108,7 @@ After this, everything should be set to go! The list of changes to your reposito
 #
 #       modified:   .gitmodules
 #       deleted:    JetSelectionHelper
-#       renamed:    CMakeLists.txt -> source/AnalysisPayload/CMakeLists.txt
+#       renamed:    CMakeLists.txt -> source/CMakeLists.txt
 #       renamed:    AnalysisPayload.cxx -> source/AnalysisPayload/util/AnalysisPayload.cxx
 #       new file:   source/JetSelectionHelper
 #
