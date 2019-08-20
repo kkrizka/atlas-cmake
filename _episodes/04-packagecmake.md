@@ -17,30 +17,45 @@ The approach we will take is to slowly construct the `CMakeLists.txt` incrementa
 
 # Compiling JetSelectionHelper
 
-Start by creating a new file at `source/JetSelectionHelper/CMakeLists.txt` with the following contents.
+Start by creating a new file at `source/JetSelectionHelper/CMakeLists.txt` with the following contents. The `ATLAS_SUBDIR` line identifies your directory as an ATLAS package with the name `JetSelectionHelper`.
 
 ```cmake
 # The name of the package
 ATLAS_SUBDIR(JetSelectionHelper)
+```
 
+Let's see what this will do. At this point, you need to run `cmake ../source` again for CMake to learn about the new file. After this, you only need to run `make` to process any changes.
+
+```cmake
+[bash][atlas AnalysisBase-21.2.75]:build > cmake ../source
+# Boring output
+[bash][atlas AnalysisBase-21.2.75]:build > make
+[bash][atlas AnalysisBase-21.2.75]:build > make
+Scanning dependencies of target Package_JetSelectionHelper_tests
+[  0%] Built target Package_JetSelectionHelper_tests
+Scanning dependencies of target atlas_tests
+[  0%] Built target atlas_tests
+Scanning dependencies of target Package_JetSelectionHelper
+[100%] Built package JetSelectionHelper
+JetSelectionHelper: Package build succeeded
+[100%] Built target Package_JetSelectionHelper
+```
+
+You can see that now the package is being picked up by make. Great! However your binary is not being compiled. Not so great. This is because we have not defined what should be compile using what source code. This is done using the `ATLAS_ADD_LIBRARY` command. It is the equivalent of the standard CMake `ADD_LIBRARY` command, but with convenience added in for handling dependencies.
+
+Add the following line to tell CMake that you want to compile a library called `JetSelectionHelperLib` using the source file `src/JetSelectionHelper.cxx`. It also copies your header files, that will be used by other packages depending on `JetSelectionHelperLib` (ie: `AnalysisPayload`) to a central place.
+
+```cmake
 # Add binary
 ATLAS_ADD_LIBRARY ( JetSelectionHelperLib JetSelectionHelper/JetSelectionHelper.h src/JetSelectionHelper.cxx
 		  PUBLIC_HEADERS JetSelectionHelper )
 ```
 
-The `ATLAS_SUBDIR` line identifies your directory as an ATLAS package with the name `JetSelectionHelper`.
-
-The `ATLAS_ADD_LIBRARY` command is the equivalent of the standard CMake `ADD_LIBRARY` command, but with convenience added in. It tells CMake that you want to compile a library called `JetSelectionHelperLib` using the source file `src/JetSelectionHelper.cxx`. It also copies your header files, that will be used by other packages depending on `JetSelectionHelperLib` (ie: `AnalysisPayload`) to a central place.
-
-You can define multiple libraries using several `ATLAS_ADD_LIBRARY` calls. However it is a good practice to only have a single library per package.
-
-Let's see what this will do. At this point, you need to run `cmake ../source` again for CMake to learn about the new file. After this, you only need to run `make` to process any changes.
+Let's see what this will do. Note that you only need to run `make` this time. CMake already knows about your `JetSelectionHelper/CMakeLists.txt` from the previous step, allowing `make` to automatically look for updates.
 
 ```bash
-[bash][atlas AnalysisBase-21.2.75]:build > cmake ../source
-# Boring output
 [bash][atlas AnalysisBase-21.2.75]:build > make
-Scanning dependencies of target Package_JetSelectionHelper_tests
+# Output from CMake being automatically rerun
 [  0%] Built target Package_JetSelectionHelper_tests
 [  0%] Built target atlas_tests
 Scanning dependencies of target JetSelectionHelperLib
@@ -137,7 +152,7 @@ Warning in <xAOD::TReturnCode>:
 myOutputFile.root
 ```
 
-
+We now have a working package! It is a good time to checkpoint and commit all of your changes.
 
 
 
