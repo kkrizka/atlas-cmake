@@ -105,8 +105,8 @@ The last step is to move the `AnalysisPayload` codebase into a new package with 
 
 ~~~shell
 mkdir source/AnalysisPayload
-mkdir source/AnalysisPayload/utils
-git mv AnalysisPayload.cxx source/AnalysisPayload/util
+mkdir source/AnalysisPayload/util
+git mv AnalysisPayload.cxx source/AnalysisPayload/util/
 git mv CMakeLists.txt source/
 ~~~
 {: .language-bash}
