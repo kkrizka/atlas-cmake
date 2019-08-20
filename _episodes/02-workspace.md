@@ -34,69 +34,82 @@ This is only a recommendation. You can take other approaches, if you like. For e
 # Transitioning Your Current Project
 At the end of the last day, you should be left with the following structure.
 
-```shell
-[bash][atlas AnalysisBase-21.2.75]:v4-gitmodule-submodule-jetselector-simplecmake > ls
+~~~shell
+ls
+~~~
+{: .bash}
+
+~~~
 AnalysisPayload.cxx  CMakeLists.txt  JetSelectionHelper/  README.md		     
-```
+~~~
+{: .output}
 
 Our goal is to convert it into the structure similar to the one outline above. We will do this using git command, meaning that your whole change history will remain intact.
 
 Start by creating the necessary directories.
 
-```shell
+~~~shell
 mkdir source/
 mkdir build/
 mkdir run/
-```
+~~~
+{: .bash}
 
 Then you should move your `JetSelectionHelper` package into the `source/` directory. Unfortunately, the version of git inside the docker image is quite old (a common theme with ATLAS software, stability is key for our experiment!) and does not yet include the ability to move git submodules. There is a manual way to do this by editing several files inside `.git/`, but that is outside the scope of this tutorial. Instead we will remove the old `JetSelectionHelper` submodule and re-add it as `source/JetSelectionHelper`. Since the `JetSelectionHelper` lives inside its own repository, you will not lose any of the change history by doing so.
 
 To remove the existing submodule, you need manually edit the `.gitmodule` file and delete the following section.
-```
+~~~
 [submodule "JetSelectionHelper"]
         path = JetSelectionHelper
         url = https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper.git
-```
+~~~
+{: .source}
 
 From `.git/config`, remove the following section.
-```
+
+~~~
 [submodule "JetSelectionHelper"]
         url = https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper.git
-```
+~~~
+{: .source}
 
 Finally remove the directory itself from git's index.
 
 By using the `--cached` option, you only remove the directory from the index while maintaining the copy on the file system. Just in case you forgot to commit some changes.
 
-```shell
+~~~shell
 git rm --cached JetSelectionHelper
-```
+~~~
+{: .bash}
 
 After these three steps, your git repository will no longer know about the `JetSelectionHelper` submodule.
 
 > ## Deleting submodules in git 1.8 and beyond
 >
 > If you are using a newer version of git, you can delete a submodule in a single step.
-> ```shell
+> ~~~shell
 > git submodule deinit JetSelectionHelper
-> ```
+> ~~~
+> {: .bash}
 {: .callout}
 
 
-Next re-add the submodule. Make to use the path to your own repository!
-```shell
-git submodule add https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper.git source/JetSelectionHelper
-```
+Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper). You will be making a few modifications. Add it as a submodule under the `source/` directory.
+~~~shell
+git submodule add https://gitlab.cern.ch/kkrizka/JetSelectionHelper.git source/JetSelectionHelper
+~~~
+{: .bash}
 
 
 The last step is to move the `AnalysisPayload` codebase into a new package with the same name. This can be done simply by using the `git mv` command that you might have learned about yesterday. The following block of commands will move everything into the structure described earlier.
 
-```shell
+~~~shell
 mkdir source/AnalysisPayload
 mkdir source/AnalysisPayload/utils
 git mv AnalysisPayload.cxx source/AnalysisPayload/util
 git mv CMakeLists.txt source/
-```
+~~~
+{: .bash}
 
 After this, everything should be set to go! The list of changes to your repository should look like the following. Make sure to commit everything before moving to the next step!
 

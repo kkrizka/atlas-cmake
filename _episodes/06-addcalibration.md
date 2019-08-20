@@ -25,17 +25,19 @@ The Athena framework provides a common interface for definining tools. They prov
 ## Initialize the Tool
 Start by including the necessary header files to the beginning of your `AnalysisPayload.cxx`. We will go over what code you are including next.
 
-```c++
+~~~c++
 // jet calibration
 #include "AsgTools/AnaToolHandle.h"
 #include "JetCalibTools/IJetCalibrationTool.h"
-```
+~~~
+{: .source}
 
 To use a tool, we wrap it inside the `asg::AnaToolHandle` class. This acts as a smart pointer, with ability to look for existing instances of the tool during initialization. We will refer to this object as a tool handle. This is a templated class, where the template is an interface class. The interface class determines what functions the tool should provide, without actually implementing them. This allows one to easily drop in alternate implementations. For the `JetCalibrationTool`, the interface class is `IJetCalibrationTool`. Add the following line near the beginning of your `main` function.
 
-```c++
+~~~c++
 asg::AnaToolHandle<IJetCalibrationTool> JetCalibrationTool_handle;
-```
+~~~
+{: .source}
 
 So far, we have only declared the tool. We still need to initialize it and create an instance. As part of the initialization, you need to
 - tell it what implemtation to use,
@@ -43,46 +45,52 @@ So far, we have only declared the tool. We still need to initialize it and creat
 - instantiate the object.
 
 Start by telling the tool handle that we want to use the `JetCalibrationTool` implementation with the name "MyCalibrationTool". The name is important for tool reuse. If another tool handle already exists with the same name, the instance of the tool is shared.
-```c++
+~~~c++
 JetCalibrationTool_handle.setTypeAndName("JetCalibrationTool/MyCalibrationTool");
-```
+~~~
+{: .source}
 
 Next let's configure the tool itself using the latest and greatest available calibration. You can find what the fields mean in the [JetCalibrationTool](https://twiki.cern.ch/twiki/bin/view/AtlasProtected/ApplyJetCalibrationR21) documentation.
-```c++
+~~~c++
 JetCalibrationTool_handle.setProperty("JetCollection","AntiKt4EMTopo"                                                  );
 JetCalibrationTool_handle.setProperty("ConfigFile"   ,"JES_MC16Recommendation_Consolidated_EMTopo_Apr2019_Rel21.config");
 JetCalibrationTool_handle.setProperty("CalibSequence","JetArea_Residual_EtaJES_GSC_Smear"                              );
 JetCalibrationTool_handle.setProperty("CalibArea"    ,"00-04-82"                                                       );
 JetCalibrationTool_handle.setProperty("IsData"       ,false                                                            );
-```
+~~~
+{: .source}
 
 Finally, create an instance of the `JetCalibrationTool` class and configure it using the information specified above.
-```c++
+~~~c++
 JetCalibrationTool_handle.retrieve();
-```
+~~~
+{: .source}
 
 ## Use the Tool
 We next need to loop over all jets in each event and apply the calibration to them before storing them. Locate your jet loop, and add a call to our `JetCalibrationTool_handle` to calibrate each jet.
 
-```c++
+~~~c++
 // calibrate the jet
 xAOD::Jet *calibratedjet;
 JetCalibrationTool_handle->calibratedCopy(*jet,calibratedjet);
-```
+~~~
+{: .source}
 
 Once you have calibrated it, save that instead of the original `jet` object. Make sure to remove the lines containing `jew_raw.push_back(*jet)` to avoid double counting.
-```c++
+~~~c++
 jets_raw.push_back(*calibratedjet);
 if( myJetTool.isJetGood(calibratedjet) ){
     jets_kin.push_back(*calibratedjet);
 }
-```
+~~~
+{: .source}
 
 Finally delete the pointer to de-allocate the memory associated with the `calibratedjet`.
-```
+~~~c++
 // cleanup
 delete calibratedjet;
-```
+~~~
+{: .source}
 
 > ## Memory Management Quiz
 >
@@ -111,7 +119,7 @@ delete calibratedjet;
 >
 > Your `AnalysisPayload/CMakeLists.txt` should now contain the following.
 >
-> ```cmake
+> ~~~cmake
 > ATLAS_ADD_EXECUTABLE ( AnalysisPayload util/AnalysisPayload.cxx
 >                      LINK_LIBRARIES  xAODEventInfo
 >                                      xAODRootAccess
@@ -119,7 +127,8 @@ delete calibratedjet;
 >                                      JetSelectionHelperLib
 >                                      AsgTools
 >                                      JetCalibToolsLib)
-> ```
+> ~~~
+> {: .source}
 >
 {: .solution}
 
