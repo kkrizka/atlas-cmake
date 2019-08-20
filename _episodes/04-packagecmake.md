@@ -32,7 +32,7 @@ Let's see what this will do. At this point, you need to run `cmake ../source` ag
 cmake ../source
 make
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 # Boring CMake output
@@ -64,7 +64,7 @@ Let's see what this will do. Note that you only need to run `make` this time. CM
 # Run from build/ directory
 make
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 # Output from CMake being automatically rerun
@@ -102,7 +102,7 @@ Now run `make` again and you should see it complete sucessfully.
 # Run from build/ directory
 make
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 # Boring output from cmake detecting an updated and being automatically rerun
@@ -153,7 +153,7 @@ On success, you should see the following when you try to build.
 cmake ../source
 make
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 # Boring CMake output
@@ -171,7 +171,7 @@ Now try running it. Note that the executable is in your `PATH`, so you can call 
 # Run from run/ directory
 AnalysisPayload
 ~~~
-{: .bash}
+{: .language-bash}
 
 We now have a working package! It is a good time to checkpoint and commit all of your changes.
 

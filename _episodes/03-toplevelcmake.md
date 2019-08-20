@@ -113,7 +113,7 @@ Now that we have written the top-level `CMakeLists.txt` file, it is time to try 
 cmake ../source
 source x86_64-slc6-gcc62-opt/setup.sh
 ~~~
-{: .bash}
+{: .language-bash}
 
 If you wrote the `CMakeLists.txt` file correctly, you should see a bunch of output saying random dependencies have been found and end with the following.
 
@@ -131,7 +131,7 @@ Now let's try to compile our source code by running `make`. You should quickly s
 ~~~bash
 make
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 Scanning dependencies of target atlas_tests
@@ -154,7 +154,7 @@ That was quick! We haven't written our package's `CMakeLists.txt` files, so it d
 > > source ~/release_setup.sh 
 > > source x86_64-slc6-gcc62-opt/setup.sh 
 > > ~~~
-> > {: .bash}
+> > {: .language-bash}
 > >
 > > ~~~
 > > Configured GCC from: /opt/lcg/gcc/6.2.0binutils/x86_64-slc6

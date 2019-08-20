@@ -37,7 +37,7 @@ At the end of the last day, you should be left with the following structure.
 ~~~shell
 ls
 ~~~
-{: .bash}
+{: .language-bash}
 
 ~~~
 AnalysisPayload.cxx  CMakeLists.txt  JetSelectionHelper/  README.md		     
@@ -53,7 +53,7 @@ mkdir source/
 mkdir build/
 mkdir run/
 ~~~
-{: .bash}
+{: .language-bash}
 
 Then you should move your `JetSelectionHelper` package into the `source/` directory. Unfortunately, the version of git inside the docker image is quite old (a common theme with ATLAS software, stability is key for our experiment!) and does not yet include the ability to move git submodules. There is a manual way to do this by editing several files inside `.git/`, but that is outside the scope of this tutorial. Instead we will remove the old `JetSelectionHelper` submodule and re-add it as `source/JetSelectionHelper`. Since the `JetSelectionHelper` lives inside its own repository, you will not lose any of the change history by doing so.
 
@@ -80,7 +80,7 @@ By using the `--cached` option, you only remove the directory from the index whi
 ~~~shell
 git rm --cached JetSelectionHelper
 ~~~
-{: .bash}
+{: .language-bash}
 
 After these three steps, your git repository will no longer know about the `JetSelectionHelper` submodule.
 
@@ -90,7 +90,7 @@ After these three steps, your git repository will no longer know about the `JetS
 > ~~~shell
 > git submodule deinit JetSelectionHelper
 > ~~~
-> {: .bash}
+> {: .language-bash}
 {: .callout}
 
 
@@ -98,7 +98,7 @@ Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/u
 ~~~shell
 git submodule add https://gitlab.cern.ch/kkrizka/JetSelectionHelper.git source/JetSelectionHelper
 ~~~
-{: .bash}
+{: .language-bash}
 
 
 The last step is to move the `AnalysisPayload` codebase into a new package with the same name. This can be done simply by using the `git mv` command that you might have learned about yesterday. The following block of commands will move everything into the structure described earlier.
@@ -109,7 +109,7 @@ mkdir source/AnalysisPayload/utils
 git mv AnalysisPayload.cxx source/AnalysisPayload/util
 git mv CMakeLists.txt source/
 ~~~
-{: .bash}
+{: .language-bash}
 
 After this, everything should be set to go! The list of changes to your repository should look like the following. Make sure to commit everything before moving to the next step!
 
