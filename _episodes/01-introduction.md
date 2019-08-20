@@ -1,7 +1,7 @@
 ---
 title: "Introduction to ATLAS Offline Software"
-teaching: 10
-exercises: 10
+teaching: 20
+exercises: 0
 questions:
 - "What is atlas/athena and what release should I be using?"
 objectives:

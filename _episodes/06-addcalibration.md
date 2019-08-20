@@ -1,7 +1,7 @@
 ---
 title: "Calibrate Your Jets"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 30
 questions:
 - "How do you use Athena tools?"
 objectives:

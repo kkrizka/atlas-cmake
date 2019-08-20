@@ -1,7 +1,7 @@
 ---
 title: "The Package CMakeLists.txt"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 20
 questions:
 - "How do I compile my package?"
 objectives:

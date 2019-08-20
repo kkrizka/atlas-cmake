@@ -1,7 +1,7 @@
 ---
 title: "The Top-Level CMakeLists.txt"
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 10
 questions:
 - "How do I tell CMake about all my packages?"
 objectives:
