@@ -109,7 +109,7 @@ atlas_cpack_setup()
 Now that we have written the top-level `CMakeLists.txt` file, it is time to try to compile everything. Make sure that you have loaded the AnalysisBase release using the `release_setup.sh` script. Run the following commands inside the `build/` directory. The first command runs CMake to create a `Makefile` that can compile your entire workspace. The second command configures your environment with the necessary paths, as described earlier.
 
 ~~~shell
-# Run from source/ directory
+# Run from build/ directory
 cmake ../source
 source x86_64-slc6-gcc62-opt/setup.sh
 ~~~
