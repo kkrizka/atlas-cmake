@@ -21,7 +21,7 @@ Start by opening the `source/CMakeLists.txt` file that contains our current CMak
 
 ~~~cmake
 # Set the minimum required CMake version:
-cmake_minimum_required( VERSION 3.4 FATAL_ERROR )
+cmake_minimum_required( VERSION 3.11 )
 ~~~
 {: .source}
 
