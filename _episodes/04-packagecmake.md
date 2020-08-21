@@ -109,11 +109,11 @@ make
 # Boring compilation output
 Scanning dependencies of target JetSelectionHelperLib
 [ 25%] Building CXX object JetSelectionHelper/CMakeFiles/JetSelectionHelperLib.dir/src/JetSelectionHelper.cxx.o
-[ 50%] Linking CXX shared library ../x86_64-slc6-gcc62-opt/lib/libJetSelectionHelperLib.so
+[ 50%] Linking CXX shared library ../x86_64-centos7-gcc8-opt/lib/libJetSelectionHelperLib.so
 Detaching debug info of libJetSelectionHelperLib.so into libJetSelectionHelperLib.so.dbg
 [ 50%] Built target JetSelectionHelperLib
 Scanning dependencies of target JetSelectionHelperHeaderInstall
-[ 75%] Generating ../x86_64-slc6-gcc62-opt/include/JetSelectionHelper
+[ 75%] Generating ../x86_64-centos7-gcc8-opt/include/JetSelectionHelper
 [ 75%] Built target JetSelectionHelperHeaderInstall
 Scanning dependencies of target Package_JetSelectionHelper
 [100%] Built package JetSelectionHelper
@@ -160,7 +160,7 @@ make
 # Boring output
 Scanning dependencies of target AnalysisPayload
 [ 42%] Building CXX object AnalysisPayload/CMakeFiles/AnalysisPayload.dir/util/AnalysisPayload.cxx.o
-[ 57%] Linking CXX executable ../x86_64-slc6-gcc62-opt/bin/AnalysisPayload
+[ 57%] Linking CXX executable ../x86_64-centos7-gcc8-opt/bin/AnalysisPayload
 # Boring Output
 ~~~
 {: .output}

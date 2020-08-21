@@ -96,7 +96,7 @@ After these three steps, your git repository will no longer know about the `JetS
 
 Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper). You will be making a few modifications. Add it as a submodule under the `source/` directory.
 ~~~shell
-git submodule add https://gitlab.cern.ch/kkrizka/JetSelectionHelper.git source/JetSelectionHelper
+git submodule add ssh://git@gitlab.cern.ch:7999/kkrizka/JetSelectionHelper.git source/JetSelectionHelper
 ~~~
 {: .language-bash}
 
@@ -135,7 +135,7 @@ After this, everything should be set to go! The list of changes to your reposito
 > >
 > > There are two important reasons:
 > > - Git reduces the history size by storying only the differences between file versions. For binary files, which is what `build/` mostly contains, finding the differences is more complicated. Thus by default, will store the entire binary file anytime you make a change. This will blow up the size of your repository by a lot.
-> > - Some of the files contain information custom to the user's environment (ie: compiler, location of libraries). By versioning these files, you will clutter the history by tracking changes that are not relevent to the performance of the code.
+> > - Some of the files contain information custom to the user's environment (ie: compiler, location of libraries). By versioning these files, you will clutter the history by tracking changes that are not relevent to the execution of the code.
 > >
 > > If you ever commit the `build/` directory, bad things will happen to you!
 > {: .solution}

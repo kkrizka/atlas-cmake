@@ -14,7 +14,7 @@ keypoints:
 In this session, we'll learn how to use the `JetCalibrationTool` to calibrate our jets. This will showcase the usefulness of having central packages accomplishing some of the common tasks.
 
 # Using The Calibration Tools
-The first step is to implement the jet calibration tool inside our `AnalysisPayload` program. This is done using the `JetCalibTools` package, maintained maintained by the JetEtMiss group. They are the ones responsible for deriving the calibrations and systematics, among many things. You can find more information about the tool on the [ApplyJetCalibrationR21](https://twiki.cern.ch/twiki/bin/view/AtlasProtected/ApplyJetCalibrationR21) twiki page. But don't take this as an example of a standard ATLAS documentation. The JetEtMiss group is exceptionally good at documenting their work!
+The first step is to implement the jet calibration tool inside our `AnalysisPayload` program. This is done using the `JetCalibTools` package, maintained by the JetEtMiss group. They are the ones responsible for deriving the calibrations and systematics, among many things. You can find more information about the tool on the [ApplyJetCalibrationR21](https://twiki.cern.ch/twiki/bin/view/AtlasProtected/ApplyJetCalibrationR21) twiki page. But don't take this as an example of a standard ATLAS documentation. The JetEtMiss group is exceptionally good at documenting their work!
 
 The Athena framework provides a common interface for definining tools. They provide functionality for
 - Garbage collection via smart pointers.
@@ -27,8 +27,8 @@ Start by including the necessary header files to the beginning of your `Analysis
 
 ~~~c++
 // jet calibration
-#include "AsgTools/AnaToolHandle.h"
-#include "JetCalibTools/IJetCalibrationTool.h"
+#include <AsgTools/AnaToolHandle.h>
+#include <JetCalibTools/IJetCalibrationTool.h>
 ~~~
 {: .source}
 

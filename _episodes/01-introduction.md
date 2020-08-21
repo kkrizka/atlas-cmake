@@ -42,7 +42,7 @@ First of all, there is the concept of an athena project. An athena project is a 
 * Reduce the size of the compiled release. This is useful if you want to create a container that can run on your laptop.
 * Allow for different release and validation cycles. Packages used for operation need to be stable and require lot of validation. Packages related to calibration can be updated quite often with latest and greatest features.
 
-The following list of projects has been tabled from the [ATLAS Software Documentation](https://atlassoftwaredocs.web.cern.ch/athena/athena-intro/).
+The following list of projects has been taken from the [ATLAS Software Documentation](https://atlassoftwaredocs.web.cern.ch/athena/athena-intro/).
 
 |Project | Purpose |
 | --- | --- |

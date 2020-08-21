@@ -27,7 +27,7 @@ cmake_minimum_required( VERSION 3.4 FATAL_ERROR )
 
 The next step tries to automatically determine what ATLAS project you are using. By automating this task, you can easily transition between different projects to test your code in different environments. Remember, out-of-source builds are awesome for this!
 
-The way this block works is by looping over all known projects (hardcoded as the `_parentProjectNames` list) and seeing if the `ProjectName_DIR` environmental variables has been set. After you run `source release_setup.sh` in your Docker image or `asetup AnalysisBase,21.2.75` when using CVMFS, this variable will contain the installation path of the project.
+The way this block works is by looping over all known projects (hardcoded as the `_parentProjectNames` list) and seeing if the `ProjectName_DIR` environmental variables has been set. After you run `source release_setup.sh` in your Docker image or `asetup AnalysisBase,21.2.125` when using CVMFS, this variable will contain the installation path of the project.
 
 ~~~cmake
 # Try to figure out what project is our parent. Just using a hard-coded list
@@ -111,7 +111,7 @@ Now that we have written the top-level `CMakeLists.txt` file, it is time to try 
 ~~~shell
 # Run from build/ directory
 cmake ../source
-source x86_64-slc6-gcc62-opt/setup.sh
+source x86_64-centos7-gcc8-opt/setup.sh
 ~~~
 {: .language-bash}
 
@@ -152,13 +152,13 @@ That was quick! We haven't written our package's `CMakeLists.txt` files, so it d
 > > ~~~bash
 > > # Run from build/ directory
 > > source ~/release_setup.sh 
-> > source x86_64-slc6-gcc62-opt/setup.sh 
+> > source x86_64-centos7-gcc8-opt/setup.sh 
 > > ~~~
 > > {: .language-bash}
 > >
 > > ~~~
-> > Configured GCC from: /opt/lcg/gcc/6.2.0binutils/x86_64-slc6
-> > Configured AnalysisBase from: /usr/AnalysisBase/21.2.75/InstallArea/x86_64-slc6-gcc62-opt
+> > Configured GCC from: /opt/lcg/gcc/8.3.0-cebb0/x86_64-centos7/bin/gcc
+> > Configured AnalysisBase from: /usr/AnalysisBase/21.2.125/InstallArea/x86_64-centos7-gcc8-opt
 > > ~~~
 > > {: .output}
 > {: .solution}
