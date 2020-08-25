@@ -57,7 +57,13 @@ mkdir run/
 
 Then you should move your `JetSelectionHelper` package into the `source/` directory. Unfortunately, the version of git inside the docker image is quite old (a common theme with ATLAS software, stability is key for our experiment!) and does not yet include the ability to move git submodules. There is a manual way to do this by editing several files inside `.git/`, but that is outside the scope of this tutorial. Instead we will remove the old `JetSelectionHelper` submodule and re-add it as `source/JetSelectionHelper`. Since the `JetSelectionHelper` lives inside its own repository, you will not lose any of the change history by doing so.
 
-To remove the existing submodule, you need manually edit the `.gitmodule` file and delete the following section.
+Start by removing the work tree of your submodule from your local git repository.
+~~~shell
+git submodule deinit JetSelectionHelper
+~~~
+{: .language-bash}
+
+To remove the reference to the submodule, you need manually edit the `.gitmodule` file and delete the following section.
 ~~~
 [submodule "JetSelectionHelper"]
         path = JetSelectionHelper
@@ -65,38 +71,18 @@ To remove the existing submodule, you need manually edit the `.gitmodule` file a
 ~~~
 {: .source}
 
-From `.git/config`, remove the following section.
-
-~~~
-[submodule "JetSelectionHelper"]
-        url = https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper.git
-~~~
-{: .source}
-
 Finally remove the directory itself from git's index.
 
-By using the `--cached` option, you only remove the directory from the index while maintaining the copy on the file system. Just in case you forgot to commit some changes.
-
 ~~~shell
-git rm --cached JetSelectionHelper
+git rm JetSelectionHelper
 ~~~
 {: .language-bash}
 
 After these three steps, your git repository will no longer know about the `JetSelectionHelper` submodule.
 
-> ## Deleting submodules in git 1.8 and beyond
->
-> If you are using a newer version of git, you can delete a submodule in a single step.
-> ~~~shell
-> git submodule deinit JetSelectionHelper
-> ~~~
-> {: .language-bash}
-{: .callout}
-
-
-Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper). You will be making a few modifications. Add it as a submodule under the `source/` directory.
+Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/usatlas-computing-bootcamp-2020/JetSelectionHelper). You will be making a few modifications. Add it as a submodule under the `source/` directory. Don't forget to replace `${USER}` with your GitLab username!
 ~~~shell
-git submodule add ssh://git@gitlab.cern.ch:7999/kkrizka/JetSelectionHelper.git source/JetSelectionHelper
+git submodule add ssh://git@gitlab.cern.ch:7999/${USER}/JetSelectionHelper.git source/JetSelectionHelper
 ~~~
 {: .language-bash}
 
@@ -107,23 +93,29 @@ The last step is to move the `AnalysisPayload` codebase into a new package with 
 mkdir source/AnalysisPayload
 mkdir source/AnalysisPayload/util
 git mv AnalysisPayload.cxx source/AnalysisPayload/util/
-git mv CMakeLists.txt source/
+git rm CMakeLists.txt
+rm source/JetSelectionHelper/CMakeLists.txt
 ~~~
 {: .language-bash}
 
-After this, everything should be set to go! The list of changes to your repository should look like the following. Make sure to commit everything before moving to the next step!
+The list of changes to your repository should look like the following. Make sure to commit everything before moving to the next step! Don't worry about the modified content (missing `CMakeLists.txt`) inside the `JetSelectionHelper` for now.
 
 ```bash
-[bash][atlas]:v4-gitmodule-submodule-jetselector-simplecmake > git status .
 # On branch master
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
 #       modified:   .gitmodules
-#       deleted:    JetSelectionHelper
-#       renamed:    CMakeLists.txt -> source/CMakeLists.txt
+#       deleted:    CMakeLists.txt
 #       renamed:    AnalysisPayload.cxx -> source/AnalysisPayload/util/AnalysisPayload.cxx
-#       new file:   source/JetSelectionHelper
+#       renamed:    JetSelectionHelper -> source/JetSelectionHelper
+#
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working directory)
+#   (commit or discard the untracked or modified content in submodules)
+#
+#       modified:   source/JetSelectionHelper (modified content)
 #
 ```
 

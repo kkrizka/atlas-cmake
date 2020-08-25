@@ -8,7 +8,7 @@ objectives:
 - "Setup an ATLAS release"
 - "Build a top-level workspace that identifies your packages"
 keypoints:
-- "Copy-paste the generic CMakeLists.txt from the ATLAS Software Documentation and place it inside the `source/` directory."
+- "Copy-paste the generic `CMakeLists.txt` from the ATLAS Software Documentation and place it inside the `source/` directory."
 ---
 
 Now that we have reorganized our code, it is time to try to write the `CMakeLists.txt` that use some useful ATLAS macros. By using the ATLAS macros, you simplify your life by automating certain tasks like dependency look-up, placing all your binaries in convenient places and preparing an archive that can be uploaded to the grid.
@@ -17,11 +17,11 @@ In this section, we will write the top-level `CMakeLists.txt` that will setup yo
 
 # Writing the CMakeLists.txt
 
-Start by opening the `source/CMakeLists.txt` file that contains our current CMake build instructions and removing all of the contents. Then start by telling CMake that you will be using command available only in version 3.4 and beyond.
+Start by opening the `source/CMakeLists.txt` file that contains our current CMake build instructions and removing all of the contents. Then start by telling CMake that you will be using command available only in version 3.14 and beyond.
 
 ~~~cmake
 # Set the minimum required CMake version:
-cmake_minimum_required( VERSION 3.4 FATAL_ERROR )
+cmake_minimum_required( VERSION 3.14 FATAL_ERROR )
 ~~~
 {: .source}
 
@@ -106,6 +106,8 @@ atlas_cpack_setup()
 {: .source}
 
 # Building your Workspace
+Start by removing the `JetSelectionHelper/
+
 Now that we have written the top-level `CMakeLists.txt` file, it is time to try to compile everything. Make sure that you have loaded the AnalysisBase release using the `release_setup.sh` script. Run the following commands inside the `build/` directory. The first command runs CMake to create a `Makefile` that can compile your entire workspace. The second command configures your environment with the necessary paths, as described earlier.
 
 ~~~shell

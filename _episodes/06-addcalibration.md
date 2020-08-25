@@ -76,11 +76,13 @@ JetCalibrationTool_handle->calibratedCopy(*jet,calibratedjet);
 ~~~
 {: .source}
 
-Once you have calibrated it, save that instead of the original `jet` object. Make sure to remove the lines containing `jew_raw.push_back(*jet)` to avoid double counting.
+Once you have calibrated it, save that instead of the original `jet` object.
 ~~~c++
 jets_raw.push_back(*calibratedjet);
-if( myJetTool.isJetGood(calibratedjet) ){
-    jets_kin.push_back(*calibratedjet);
+
+// perform kinematic selections and store in vector of "selected jets"
+if(jet_selector.isJetGood(calibratedjet)){
+  jets_kin.push_back(*calibratedjet);
 }
 ~~~
 {: .source}

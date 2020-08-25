@@ -17,7 +17,7 @@ Start by pointing your web browser to the [official; athena repository](https://
 
 ~~~bash
 # Run from source/ directory
-git clone ssh://git@gitlab.cern.ch:7999/kkrizka/athena.git
+git clone ssh://git@gitlab.cern.ch:7999/${USER}/athena.git
 cd athena
 git checkout 21.2
 ~~~

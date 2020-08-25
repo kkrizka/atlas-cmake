@@ -67,15 +67,15 @@ make
 {: .language-bash}
 
 ~~~
-# Output from CMake being automatically rerun
-[  0%] Built target Package_JetSelectionHelper_tests
-[  0%] Built target atlas_tests
+Scanning dependencies of target JetSelectionHelperHeaderInstall
+[ 25%] Generating ../x86_64-centos7-gcc8-opt/include/JetSelectionHelper
+[ 25%] Built target JetSelectionHelperHeaderInstall
 Scanning dependencies of target JetSelectionHelperLib
-[ 25%] Building CXX object JetSelectionHelper/CMakeFiles/JetSelectionHelperLib.dir/src/JetSelectionHelper.cxx.o
-In file included from /home/atlas/Bootcamp/v4-gitmodule-submodule-jetselector-simplecmake/source/JetSelectionHelper/src/JetSelectionHelper.cxx:1:0:
-/home/atlas/Bootcamp/v4-gitmodule-submodule-jetselector-simplecmake/source/JetSelectionHelper/JetSelectionHelper/JetSelectionHelper.h:1:25: fatal error: xAODJet/Jet.h: No such file or directory
+[ 50%] Building CXX object JetSelectionHelper/CMakeFiles/JetSelectionHelperLib.dir/src/JetSelectionHelper.cxx.o
+In file included from /home/kkrizka/Bootcamp/v1-gitlab-finished-code/source/JetSelectionHelper/src/JetSelectionHelper.cxx:1:
+/home/kkrizka/Bootcamp/v1-gitlab-finished-code/source/JetSelectionHelper/JetSelectionHelper/JetSelectionHelper.h:1:10: fatal error: xAODJet/Jet.h: No such file or directory
  #include "xAODJet/Jet.h"
-                         ^
+          ^~~~~~~~~~~~~~~
 compilation terminated.
 make[2]: *** [JetSelectionHelper/CMakeFiles/JetSelectionHelperLib.dir/src/JetSelectionHelper.cxx.o] Error 1
 make[1]: *** [JetSelectionHelper/CMakeFiles/JetSelectionHelperLib.dir/all] Error 2
