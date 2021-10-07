@@ -9,7 +9,7 @@ If you had any issues working on your own project, you can always fork the examp
 Start your docker image with
 ~~~
 docker run --rm -it -w /home/atlas/Bootcamp -v \
-    $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.125 \
+    $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.186 \
     bash -c 'cp -r ssh-credentials ~/.ssh; cp gitconfig ~/.gitconfig ; bash'
 ~~~
 {: .language-bash}

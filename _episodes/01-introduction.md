@@ -66,11 +66,11 @@ The official releases are compiled and copied to CVMFS. For certail projects, Do
 
 > ## Our Project,Release
 >
-> Our goal is to analyze data using a very lightweight framework. What project and release will we be using? (Hint: It is in the form of `Project,A.B.125`).
+> Our goal is to analyze data using a very lightweight framework. What project and release will we be using? (Hint: It is in the form of `Project,A.B.186`).
 >
 > > ## Solution
 > >
-> > We will be using `AnalysisBase,21.2.125`. We need the `AnalysisBase` project to get the basic tools without the full environment and release `21.2` is designed for analyzing Run 2 data. The minor release, `125`, was the latest one available at the time of writing.
+> > We will be using `AnalysisBase,21.2.186`. We need the `AnalysisBase` project to get the basic tools without the full environment and release `21.2` is designed for analyzing Run 2 data. The minor release, `186`, was the latest one available at the time of writing.
 > {: .solution}
 {: .challenge}
 
