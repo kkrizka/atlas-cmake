@@ -80,7 +80,7 @@ git rm JetSelectionHelper
 
 After these three steps, your git repository will no longer know about the `JetSelectionHelper` submodule.
 
-Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/usatlas-computing-bootcamp-2020/JetSelectionHelper). You will be making a few modifications. Add it as a submodule under the `source/` directory. Don't forget to replace `${USER}` with your GitLab username!
+Next make a fork of the [JetSelectionHelper repository](https://gitlab.cern.ch/usatlas-computing-bootcamp-2021/JetSelectionHelper). You will be making a few modifications. Add it as a submodule under the `source/` directory. Don't forget to replace `${USER}` with your GitLab username!
 ~~~shell
 git submodule add ssh://git@gitlab.cern.ch:7999/${USER}/JetSelectionHelper.git source/JetSelectionHelper
 ~~~
