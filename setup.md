@@ -3,21 +3,19 @@ title: Setup
 ---
 This lesson builds on the `AnalysisPayload` program developed in the ATALS GitLab lesson. To continue, you will need to have a working version of it.
 
-If you had any issues working on your own project, you can always fork the example from the [usatlas-computing-bootcamp-2021/v1-gitlab-finished-code](https://gitlab.cern.ch/usatlas-computing-bootcamp-2021/v1-gitlab-finished-code) GitLab repository.
+If you had any issues working on your own project, you can always fork the example from the [usatlas-computing-bootcamp-2021/02-atlas-gitlab](https://gitlab.cern.ch/usatlas-computing-bootcamp-2021/02-atlas-gitlab) GitLab repository.
 
 # Quick Start
-Start your docker image with
+Login to the UChicago Analysis Facility
 ~~~
-docker run --rm -it -w /home/atlas/Bootcamp -v \
-    $PWD:/home/atlas/Bootcamp atlas/analysisbase:21.2.186 \
-    bash -c 'cp -r ssh-credentials ~/.ssh; cp gitconfig ~/.gitconfig ; bash'
+ssh login.af.uchicago.edu
 ~~~
 {: .language-bash}
 
 
 Clone the starting point using
 ~~~
-git clone --recursive ssh://git@gitlab.cern.ch:7999/usatlas-computing-bootcamp-2021/v1-gitlab-finished-code.git
+git clone --recursive ssh://git@gitlab.cern.ch:7999/usatlas-computing-bootcamp-2021/02-atlas-gitlab.git
 ~~~
 {: .language-bash}
 
