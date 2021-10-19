@@ -106,14 +106,14 @@ atlas_cpack_setup()
 {: .source}
 
 # Building your Workspace
-Start by removing the `JetSelectionHelper/
+Start by removing the `JetSelectionHelper/`.
 
 Now that we have written the top-level `CMakeLists.txt` file, it is time to try to compile everything. Make sure that you have loaded the AnalysisBase release using the `release_setup.sh` script. Run the following commands inside the `build/` directory. The first command runs CMake to create a `Makefile` that can compile your entire workspace. The second command configures your environment with the necessary paths, as described earlier.
 
 ~~~shell
-# Run from build/ directory
-cmake ../source
-source x86_64-centos7-gcc8-opt/setup.sh
+# Run from workspace
+cmake -Ssource -Bbuild
+source build/x86_64-centos7-gcc8-opt/setup.sh
 ~~~
 {: .language-bash}
 
@@ -129,9 +129,10 @@ If you wrote the `CMakeLists.txt` file correctly, you should see a bunch of outp
 ~~~
 {: .output}
 
-Now let's try to compile our source code by running `make`. You should quickly see the following:
+Now let's try to compile our source code. You should quickly see the following:
 ~~~bash
-make
+# Run from workspace
+cmake --build build
 ~~~
 {: .language-bash}
 
@@ -171,4 +172,3 @@ That was quick! We haven't written our package's `CMakeLists.txt` files, so it d
 
 
 {% include links.md %}
-

@@ -67,7 +67,7 @@ To remove the reference to the submodule, you need manually edit the `.gitmodule
 ~~~
 [submodule "JetSelectionHelper"]
         path = JetSelectionHelper
-        url = https://gitlab.cern.ch/usatlas-computing-bootcamp/JetSelectionHelper.git
+        url = https://gitlab.cern.ch/usatlas-computing-bootcamp-2021/JetSelectionHelper.git
 ~~~
 {: .source}
 

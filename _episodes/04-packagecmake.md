@@ -13,7 +13,7 @@ keypoints:
 
 In this section, we will write two `CMakeLists.txt` files; one for the `JetSelectionHelper` package and one for the `AnalysisPayload` package. The contents will tell CMake how to compile each package. The former will teach you how to define a library and the latter how to define an executable program.
 
-The approach we will take is to slowly construct the `CMakeLists.txt` incrementaly adding blocks and running `make` each time. Quite often, this will result in an error. We will then analyze the error and implement the next block that fixes it.
+The approach we will take is to slowly construct the `CMakeLists.txt` incrementaly adding blocks and building each time. Quite often, this will result in an error. We will then analyze the error and implement the next block that fixes it.
 
 # Compiling JetSelectionHelper
 
@@ -25,12 +25,11 @@ ATLAS_SUBDIR(JetSelectionHelper)
 ~~~
 {: .source}
 
-Let's see what this will do. At this point, you need to run `cmake ../source` again for CMake to learn about the new file. After this, you only need to run `make` to process any changes.
+Let's see what this will do. At this point, you need to run `cmake build` again for CMake to learn about the new `CMakeLists.txt` file. After this, you only need to run `cmake --build` to process any changes.
 
 ~~~
-# Run from build/ directory
-cmake ../source
-make
+cmake build
+cmake --build build
 ~~~
 {: .language-bash}
 
@@ -58,11 +57,10 @@ ATLAS_ADD_LIBRARY ( JetSelectionHelperLib JetSelectionHelper/JetSelectionHelper.
 ~~~
 {: .source}
 
-Let's see what this will do. Note that you only need to run `make` this time. CMake already knows about your `JetSelectionHelper/CMakeLists.txt` from the previous step, allowing `make` to automatically look for updates.
+Let's see what this will do. Note that you only need to run `cmake --build build` this time. CMake already knows about your `JetSelectionHelper/CMakeLists.txt` from the previous step, allowing the build command to automatically look for updates.
 
 ~~~bash
-# Run from build/ directory
-make
+cmake --build build
 ~~~
 {: .language-bash}
 
@@ -96,11 +94,10 @@ ATLAS_ADD_LIBRARY ( JetSelectionHelperLib JetSelectionHelper/JetSelectionHelper.
 ~~~
 {: .source}
 
-Now run `make` again and you should see it complete sucessfully.
+Now build again and you should see it complete sucessfully.
 
 ~~~bash
-# Run from build/ directory
-make
+cmake --build build
 ~~~
 {: .language-bash}
 
@@ -149,9 +146,8 @@ Try writing the `CMakeLists.txt` file on your own! Don't forget that our `Analys
 On success, you should see the following when you try to build.
 
 ~~~bash
-# Run from build/ directory
-cmake ../source
-make
+cmake build
+cmake --build build
 ~~~
 {: .language-bash}
 
