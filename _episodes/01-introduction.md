@@ -22,7 +22,7 @@ All of the central ATLAS software is stored in a public repository called [Athen
 This lesson will not touch any of this source code in detail. How to develop new Athena software is covered in the [official ATLAS documentation](https://atlassoftwaredocs.web.cern.ch/athena/). Instead we will focus on *using* the pre-compiled versions of a few athena packages.
 
 # Athena Packages
-The Athena repository contains several packages. A single package is a collection of related libraries, programs and other supporting files that are maintained by a dedicated group of developers. For example, the `Reconstruction/Jet/JetCalibTools/JetCalibTools` package contains all of the code necessary to calibrate jets.
+The Athena repository contains several packages. A single package is a collection of related classes, programs and other supporting files that are maintained by a dedicated group of developers. For example, the `Reconstruction/Jet/JetCalibTools/JetCalibTools` package contains all of the code necessary to calibrate jets.
 
 Each package, for example `Package`, is a directory with the following structure:
 - `Package/`: All of the header files, where `Package` is replaced with the package's name
