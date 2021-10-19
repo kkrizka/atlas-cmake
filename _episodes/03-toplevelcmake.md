@@ -153,14 +153,17 @@ That was quick! We haven't written our package's `CMakeLists.txt` files, so it d
 > >
 > > ~~~bash
 > > # Run from build/ directory
-> > source ~/release_setup.sh 
+> > setupATLAS
+> > asetup --restore
 > > source x86_64-centos7-gcc8-opt/setup.sh 
 > > ~~~
 > > {: .language-bash}
 > >
 > > ~~~
-> > Configured GCC from: /opt/lcg/gcc/8.3.0-cebb0/x86_64-centos7/bin/gcc
-> > Configured AnalysisBase from: /usr/AnalysisBase/21.2.186/InstallArea/x86_64-centos7-gcc8-opt
+> > Set up the following release as last used under the current directory
+> > Using AnalysisBase/21.2.186 [cmake] with platform x86_64-centos7-gcc8-opt
+> >         at /cvmfs/atlas.cern.ch/repo/sw/software/21.2
+> > Unchanged: COOL_ORA_ENABLE_ADAPTIVE_OPT=Y
 > > ~~~
 > > {: .output}
 > {: .solution}
