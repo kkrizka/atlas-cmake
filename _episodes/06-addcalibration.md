@@ -52,11 +52,11 @@ JetCalibrationTool_handle.setTypeAndName("JetCalibrationTool/MyCalibrationTool")
 
 Next let's configure the tool itself using the latest and greatest available calibration. You can find what the fields mean in the [JetCalibrationTool](https://twiki.cern.ch/twiki/bin/view/AtlasProtected/ApplyJetCalibrationR21) documentation.
 ~~~c++
-JetCalibrationTool_handle.setProperty("JetCollection","AntiKt4EMTopo"                                                  );
-JetCalibrationTool_handle.setProperty("ConfigFile"   ,"JES_MC16Recommendation_Consolidated_EMTopo_Apr2019_Rel21.config");
-JetCalibrationTool_handle.setProperty("CalibSequence","JetArea_Residual_EtaJES_GSC_Smear"                              );
-JetCalibrationTool_handle.setProperty("CalibArea"    ,"00-04-82"                                                       );
-JetCalibrationTool_handle.setProperty("IsData"       ,false                                                            );
+JetCalibrationTool_handle.setProperty("JetCollection","AntiKt4EMPFlow"                                                );
+JetCalibrationTool_handle.setProperty("ConfigFile"   ,"JES_MC16Recommendation_Consolidated_PFlow_Apr2019_Rel21.config");
+JetCalibrationTool_handle.setProperty("CalibSequence","JetArea_Residual_EtaJES_GSC_Smear"                             );
+JetCalibrationTool_handle.setProperty("CalibArea"    ,"00-04-82"                                                      );
+JetCalibrationTool_handle.setProperty("IsData"       ,false                                                           );
 ~~~
 {: .source}
 
